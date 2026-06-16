@@ -1,5 +1,5 @@
 {
-  "name": "@ssilva.felipe/tailwind-animation-v4",
+  "name": "@fss/tailwind-animation-v4",
   "description": "Plugin animation for tailwind 4",
   "version": "0.0.1",
   "type": "module",
