@@ -1,0 +1,17 @@
+/* Hover */
+
+@theme inline {
+    --animate-lift: lift 0.3s ease-out;
+    --animate-press: press 0.1s ease-out;
+    --animate-glow-pulse: glow-pulse 2s ease-in-out infinite;
+    --animate-shine-sweep: shine-sweep 2s linear infinite;
+    --animate-tilt-3d: tilt-3d 0.5s ease-out;
+    --animate-magnetic: magnetic 0.3s ease-out;
+}
+
+@keyframes lift { 0% { transform: translateY(0) translateZ(0); box-shadow: 0 0 0 rgba(0,0,0,0); } 100% { transform: translateY(-8px) translateZ(20px); box-shadow: 0 12px 24px rgba(0,0,0,0.15); } }
+@keyframes press { 0% { transform: scale(1); } 100% { transform: scale(0.95); } }
+@keyframes glow-pulse { 0%, 100% { box-shadow: 0 0 5px rgba(99, 102, 241, 0.5); } 50% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.8), 0 0 40px rgba(99, 102, 241, 0.4); } }
+@keyframes shine-sweep { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+@keyframes tilt-3d { 0% { transform: perspective(1000px) rotateX(0deg) rotateY(0deg); } 100% { transform: perspective(1000px) rotateX(5deg) rotateY(5deg); } }
+@keyframes magnetic { 0% { transform: translate(0, 0); } 100% { transform: translate(2px, 2px); } }

@@ -1,0 +1,13 @@
+/* test/index.css */
+
+/* 1. Tailwind base */
+@import "tailwindcss";
+
+/* 2. Cargar el plugin JS (debe ir antes de los @apply) */
+@plugin "../dist/index.js";
+
+/* 3. Cargar las variables de tema y animaciones base */
+@import "../dist/theme.css";
+
+/* 4. Forzar la generación de todas las clases de utilidad */
+@import "./all-animations.css";

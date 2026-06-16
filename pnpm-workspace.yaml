@@ -1,0 +1,7 @@
+allowBuilds:
+  '@pnpm/exe': false
+  esbuild: true
+minimumReleaseAgeExclude:
+  - astro@6.4.7
+overrides:
+  '@fss/tailwind-animation-v4': 'link:'

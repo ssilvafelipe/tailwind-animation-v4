@@ -1,0 +1,159 @@
+/* ARCHIVO GENERADO AUTOMÁTICAMENTE - NO EDITAR */
+
+
+/* === Módulo: animations === */
+.animate-background-shine { @apply animate-background-shine; }
+.animate-fade-in { @apply animate-fade-in; }
+.animate-fade-out { @apply animate-fade-out; }
+.animate-slide-in-top { @apply animate-slide-in-top; }
+.animate-slide-in-bottom { @apply animate-slide-in-bottom; }
+.animate-slide-out-top { @apply animate-slide-out-top; }
+.animate-slide-out-bottom { @apply animate-slide-out-bottom; }
+.animate-zoom-in { @apply animate-zoom-in; }
+.animate-zoom-out { @apply animate-zoom-out; }
+.animate-rotate-90 { @apply animate-rotate-90; }
+.animate-rotate-180 { @apply animate-rotate-180; }
+.animate-rotate-360 { @apply animate-rotate-360; }
+.animate-flip-horizontal { @apply animate-flip-horizontal; }
+.animate-flip-vertical { @apply animate-flip-vertical; }
+.animate-bouncing { @apply animate-bouncing; }
+.animate-swing { @apply animate-swing; }
+.animate-wobble { @apply animate-wobble; }
+.animate-pulse-simple { @apply animate-pulse-simple; }
+.animate-shake { @apply animate-shake; }
+.animate-tada { @apply animate-tada; }
+.animate-jump { @apply animate-jump; }
+.animate-hang { @apply animate-hang; }
+.animate-roll-in { @apply animate-roll-in; }
+.animate-roll-out { @apply animate-roll-out; }
+.animate-float { @apply animate-float; }
+.animate-sink { @apply animate-sink; }
+.animate-flash { @apply animate-flash; }
+.animate-jiggle { @apply animate-jiggle; }
+.animate-rubber-band { @apply animate-rubber-band; }
+.animate-slide-in-left { @apply animate-slide-in-left; }
+.animate-slide-in-right { @apply animate-slide-in-right; }
+.animate-slide-out-left { @apply animate-slide-out-left; }
+.animate-slide-out-right { @apply animate-slide-out-right; }
+.animate-spin-clockwise { @apply animate-spin-clockwise; }
+.animate-spin-counter-clockwise { @apply animate-spin-counter-clockwise; }
+.animate-flip-x { @apply animate-flip-x; }
+.animate-flip-y { @apply animate-flip-y; }
+.animate-blink { @apply animate-blink; }
+.animate-pop { @apply animate-pop; }
+.animate-expand-horizontally { @apply animate-expand-horizontally; }
+.animate-contract-horizontally { @apply animate-contract-horizontally; }
+.animate-expand-vertically { @apply animate-expand-vertically; }
+.animate-contract-vertically { @apply animate-contract-vertically; }
+.animate-fade-in-up { @apply animate-fade-in-up; }
+.animate-fade-in-down { @apply animate-fade-in-down; }
+.animate-fade-in-left { @apply animate-fade-in-left; }
+.animate-fade-in-right { @apply animate-fade-in-right; }
+.animate-fade-out-up { @apply animate-fade-out-up; }
+.animate-fade-out-down { @apply animate-fade-out-down; }
+.animate-fade-out-left { @apply animate-fade-out-left; }
+.animate-fade-out-right { @apply animate-fade-out-right; }
+.animate-sway { @apply animate-sway; }
+.animate-flip-in-x { @apply animate-flip-in-x; }
+.animate-flip-in-y { @apply animate-flip-in-y; }
+.animate-flip-out-x { @apply animate-flip-out-x; }
+.animate-flip-out-y { @apply animate-flip-out-y; }
+.animate-rotate-in { @apply animate-rotate-in; }
+.animate-rotate-out { @apply animate-rotate-out; }
+.animate-slide-rotate-in { @apply animate-slide-rotate-in; }
+.animate-slide-rotate-out { @apply animate-slide-rotate-out; }
+.animate-heartbeat { @apply animate-heartbeat; }
+.animate-blurred-fade-in { @apply animate-blurred-fade-in; }
+.animate-horizontal-vibration { @apply animate-horizontal-vibration; }
+.animate-rotational-wave { @apply animate-rotational-wave; }
+.animate-skew { @apply animate-skew; }
+.animate-vertical-bounce { @apply animate-vertical-bounce; }
+.animate-horizontal-bounce { @apply animate-horizontal-bounce; }
+.animate-tilt { @apply animate-tilt; }
+.animate-squeeze { @apply animate-squeeze; }
+.animate-slide-up-fade { @apply animate-slide-up-fade; }
+.animate-bounce-fade-in { @apply animate-bounce-fade-in; }
+.animate-swing-drop-in { @apply animate-swing-drop-in; }
+.animate-pulse-fade-in { @apply animate-pulse-fade-in; }
+
+/* === Módulo: loading === */
+.animate-spin { @apply animate-spin; }
+.animate-ping { @apply animate-ping; }
+.animate-bounce-loading { @apply animate-bounce-loading; }
+.animate-dots-pulse { @apply animate-dots-pulse; }
+.animate-barber-pole { @apply animate-barber-pole; }
+.animate-skeleton { @apply animate-skeleton; }
+.animate-wave-loading { @apply animate-wave-loading; }
+
+/* === Módulo: text === */
+.animate-typing { @apply animate-typing; }
+.animate-blink-caret { @apply animate-blink-caret; }
+.animate-text-shine { @apply animate-text-shine; }
+.animate-text-wave { @apply animate-text-wave; }
+.animate-gradient-text { @apply animate-gradient-text; }
+.animate-glitch { @apply animate-glitch; }
+.animate-text-flicker { @apply animate-text-flicker; }
+
+/* === Módulo: hover === */
+.animate-lift { @apply animate-lift; }
+.animate-press { @apply animate-press; }
+.animate-glow-pulse { @apply animate-glow-pulse; }
+.animate-shine-sweep { @apply animate-shine-sweep; }
+.animate-tilt-3d { @apply animate-tilt-3d; }
+.animate-magnetic { @apply animate-magnetic; }
+
+/* === Módulo: notifications === */
+.animate-toast-in { @apply animate-toast-in; }
+.animate-toast-out { @apply animate-toast-out; }
+.animate-modal-zoom { @apply animate-modal-zoom; }
+.animate-drawer-slide { @apply animate-drawer-slide; }
+.animate-tooltip-pop { @apply animate-tooltip-pop; }
+
+/* === Delays === */
+.animate-delay-0 { @apply animate-delay-0; }
+.animate-delay-100 { @apply animate-delay-100; }
+.animate-delay-150 { @apply animate-delay-150; }
+.animate-delay-200 { @apply animate-delay-200; }
+.animate-delay-250 { @apply animate-delay-250; }
+.animate-delay-300 { @apply animate-delay-300; }
+.animate-delay-350 { @apply animate-delay-350; }
+.animate-delay-400 { @apply animate-delay-400; }
+.animate-delay-500 { @apply animate-delay-500; }
+.animate-delay-600 { @apply animate-delay-600; }
+.animate-delay-700 { @apply animate-delay-700; }
+.animate-delay-800 { @apply animate-delay-800; }
+.animate-delay-900 { @apply animate-delay-900; }
+.animate-delay-1000 { @apply animate-delay-1000; }
+.animate-delay-none { @apply animate-delay-none; }
+
+/* === Durations === */
+.animate-duration-75 { @apply animate-duration-75; }
+.animate-duration-100 { @apply animate-duration-100; }
+.animate-duration-150 { @apply animate-duration-150; }
+.animate-duration-200 { @apply animate-duration-200; }
+.animate-duration-300 { @apply animate-duration-300; }
+.animate-duration-500 { @apply animate-duration-500; }
+.animate-duration-700 { @apply animate-duration-700; }
+.animate-duration-1000 { @apply animate-duration-1000; }
+.animate-duration-1500 { @apply animate-duration-1500; }
+.animate-duration-2000 { @apply animate-duration-2000; }
+.animate-duration-2500 { @apply animate-duration-2500; }
+.animate-duration-3000 { @apply animate-duration-3000; }
+.animate-duration-none { @apply animate-duration-none; }
+.animate-duration-slower { @apply animate-duration-slower; }
+.animate-duration-slow { @apply animate-duration-slow; }
+.animate-duration-normal { @apply animate-duration-normal; }
+.animate-duration-fast { @apply animate-duration-fast; }
+.animate-duration-faster { @apply animate-duration-faster; }
+
+/* === Easings === */
+.animate-ease-linear { @apply animate-ease-linear; }
+.animate-ease-ease { @apply animate-ease-ease; }
+.animate-ease-ease-in { @apply animate-ease-ease-in; }
+.animate-ease-ease-out { @apply animate-ease-ease-out; }
+.animate-ease-ease-in-out { @apply animate-ease-ease-in-out; }
+.animate-ease-bounce { @apply animate-ease-bounce; }
+.animate-ease-spring { @apply animate-ease-spring; }
+.animate-ease-snappy { @apply animate-ease-snappy; }
+.animate-ease-smooth { @apply animate-ease-smooth; }
+.animate-ease-dramatic { @apply animate-ease-dramatic; }

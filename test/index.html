@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio de Animaciones - Plugin Tailwind v4</title>
+    <link rel="stylesheet" href="output.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: #f8fafc;
+            padding: 2rem;
+            margin: 0;
+            color: #1e293b;
+        }
+
+        header {
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+            font-size: 2rem;
+        }
+
+        .subtitle {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ===== COMBINADOR ===== */
+        .combinator {
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            border-radius: 16px;
+            padding: 2rem;
+            color: white;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .combinator h2 {
+            margin: 0 0 0.5rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .combinator .description {
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .combinator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .combo-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .combo-field label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            opacity: 0.9;
+        }
+
+        .combo-field select {
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 0.9rem;
+            font-family: 'Courier New', monospace;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .combo-field select:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .combo-field select:focus {
+            outline: none;
+            border-color: white;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .combo-field select option {
+            background: #4338ca;
+            color: white;
+        }
+
+        .combo-preview {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .combo-box-container {
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            flex-shrink: 0;
+        }
+
+        .combo-box {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .combo-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .combo-classes {
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            background: rgba(0, 0, 0, 0.25);
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            word-break: break-all;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .combo-classes .cls-base {
+            color: #fbbf24;
+        }
+
+        .combo-classes .cls-delay {
+            color: #34d399;
+        }
+
+        .combo-classes .cls-duration {
+            color: #f472b6;
+        }
+
+        .combo-classes .cls-ease {
+            color: #60a5fa;
+        }
+
+        .combo-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .combo-btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 2px solid white;
+            background: white;
+            color: #4338ca;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .combo-btn:hover {
+            background: transparent;
+            color: white;
+        }
+
+        .combo-btn.secondary {
+            background: transparent;
+            color: white;
+        }
+
+        .combo-btn.secondary:hover {
+            background: white;
+            color: #4338ca;
+        }
+
+        .combo-btn.copy-btn {
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+        }
+
+        /* ===== CONTROLES ===== */
+        .controls {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            max-width: 400px;
+            padding: 10px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #6366f1;
+        }
+
+        .replay-all-btn {
+            padding: 10px 20px;
+            background: #10b981;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .replay-all-btn:hover {
+            background: #059669;
+            transform: translateY(-1px);
+        }
+
+        .category-filters {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .filter-btn {
+            padding: 6px 14px;
+            border: 2px solid #e2e8f0;
+            background: white;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #475569;
+        }
+
+        .filter-btn:hover {
+            border-color: #6366f1;
+            color: #6366f1;
+        }
+
+        .filter-btn.active {
+            background: #6366f1;
+            color: white;
+            border-color: #6366f1;
+        }
+
+        .filter-btn .count {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.1);
+            padding: 1px 6px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            margin-left: 4px;
+        }
+
+        .filter-btn.active .count {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .stats {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .stats strong {
+            color: #6366f1;
+        }
+
+        /* ===== GRID ===== */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.25rem 1rem;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 2px solid #e2e8f0;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            position: relative;
+        }
+
+        .card:hover {
+            border-color: #6366f1;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .card.hidden {
+            display: none;
+        }
+
+        .card.animating {
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+        }
+
+        .category-badge {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 2px 8px;
+            border-radius: 10px;
+            background: #e0e7ff;
+            color: #4338ca;
+        }
+
+        .category-badge.base {
+            background: #e0e7ff;
+            color: #4338ca;
+        }
+
+        .category-badge.loading {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .category-badge.text {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .category-badge.hover {
+            background: #fce7f3;
+            color: #9f1239;
+        }
+
+        .category-badge.notifications {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .category-badge.delays {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .category-badge.durations {
+            background: #fce7f3;
+            color: #9f1239;
+        }
+
+        .category-badge.easings {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .box-container {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f1f5f9;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .box {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #6366f1, #4338ca);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.3);
+        }
+
+        .label {
+            font-family: 'Courier New', monospace;
+            font-size: 0.7rem;
+            color: #475569;
+            background: #f1f5f9;
+            padding: 6px 8px;
+            border-radius: 4px;
+            word-break: break-all;
+            line-height: 1.4;
+            width: 100%;
+            text-align: left;
+        }
+
+        .label .base-cls {
+            color: #94a3b8;
+        }
+
+        .label .main-cls {
+            color: #6366f1;
+            font-weight: bold;
+        }
+
+        /* Selector de animación base en tarjetas de utilidades */
+        .base-selector {
+            width: 100%;
+            padding: 4px 8px;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-family: 'Courier New', monospace;
+            color: #475569;
+            background: white;
+            cursor: pointer;
+        }
+
+        .base-selector:hover {
+            border-color: #6366f1;
+        }
+
+        .replay-btn {
+            background-color: #6366f1;
+            color: white;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            width: 100%;
+        }
+
+        .replay-btn:hover {
+            background-color: #4f46e5;
+            transform: translateY(-1px);
+        }
+
+        .replay-btn:active {
+            transform: translateY(0);
+        }
+
+        .loading-state,
+        .error-state,
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+
+        .error-state {
+            color: #dc2626;
+            background: #fef2f2;
+            border-radius: 12px;
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .empty-state {
+            grid-column: 1 / -1;
+        }
+
+        /* Toast de copia */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #10b981;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Laboratorio de Animaciones</h1>
+        <p class="subtitle">Explora y combina animaciones de Tailwind CSS v4 en tiempo real</p>
+    </header>
+
+    <!-- ===== COMBINADOR INTERACTIVO ===== -->
+    <section class="combinator">
+        <h2>Combinador de Animaciones</h2>
+        <p class="description">
+            Construye tu propia animación combinando una base con delay, duración y easing personalizados.
+        </p>
+
+        <div class="combinator-grid">
+            <div class="combo-field">
+                <label>🎬 Animación Base</label>
+                <select id="combo-base"></select>
+            </div>
+            <div class="combo-field">
+                <label>⏱️ Delay</label>
+                <select id="combo-delay"></select>
+            </div>
+            <div class="combo-field">
+                <label>⏳ Duración</label>
+                <select id="combo-duration"></select>
+            </div>
+            <div class="combo-field">
+                <label>🎢 Easing</label>
+                <select id="combo-ease"></select>
+            </div>
+        </div>
+
+        <div class="combo-preview">
+            <div class="combo-box-container">
+                <div class="combo-box" id="combo-box"></div>
+            </div>
+            <div class="combo-info">
+                <div class="combo-classes" id="combo-classes"></div>
+                <div class="combo-actions">
+                    <button class="combo-btn" id="combo-play">▶ Reproducir</button>
+                    <button class="combo-btn secondary copy-btn" id="combo-copy">📋 Copiar HTML</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTROLES ===== -->
+    <div class="controls">
+        <input type="text" class="search-box" id="search" placeholder="🔍 Buscar animación...">
+        <button class="replay-all-btn" id="replay-all">
+            <span>▶</span>
+            <span>Repetir todas</span>
+        </button>
+    </div>
+
+    <div class="category-filters" id="category-filters"></div>
+    <div class="stats" id="stats"></div>
+    <div class="grid" id="animation-grid">
+        <div class="loading-state">⏳ Cargando animaciones...</div>
+    </div>
+
+    <div class="toast" id="toast">✅ Copiado al portapapeles</div>
+
+    <script>
+        // Animaciones base recomendadas para combinar con utilidades
+        const BASE_ANIMATIONS_FOR_COMBO = [
+            'fade-in', 'fade-in-up', 'fade-in-down', 'bounce-fade-in',
+            'slide-in-top', 'slide-in-left', 'zoom-in', 'rotate-in',
+            'bouncing', 'pulse-simple', 'swing', 'tada', 'heartbeat',
+            'flip-in-x', 'flip-in-y', 'swing-drop-in'
+        ];
+
+        let animationData = null;
+
+        // ===== INICIALIZACIÓN =====
+        async function init() {
+            const grid = document.getElementById('animation-grid');
+
+            try {
+                const response = await fetch('animations-data.json');
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                animationData = await response.json();
+
+                console.log('📊 Datos cargados:', animationData);
+
+                // Inicializar el combinador
+                initCombinator();
+
+                // Renderizar tarjetas
+                renderCards();
+
+                // Event listeners
+                document.getElementById('search').addEventListener('input', filterCards);
+                document.getElementById('replay-all').addEventListener('click', replayAll);
+
+            } catch (error) {
+                grid.innerHTML = `
+                    <div class="error-state">
+                        <h2>❌ Error</h2>
+                        <p>${error.message}</p>
+                        <p>Ejecuta <code>pnpm run generate:css</code> y <code>pnpm run build:css</code>.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // ===== COMBINADOR =====
+        function initCombinator() {
+            const baseSelect = document.getElementById('combo-base');
+            const delaySelect = document.getElementById('combo-delay');
+            const durationSelect = document.getElementById('combo-duration');
+            const easeSelect = document.getElementById('combo-ease');
+
+            // Llenar select de animaciones base
+            BASE_ANIMATIONS_FOR_COMBO.forEach(anim => {
+                const opt = document.createElement('option');
+                opt.value = anim;
+                opt.textContent = `animate-${anim}`;
+                baseSelect.appendChild(opt);
+            });
+
+            // Llenar delays
+            const noneDelayOpt = document.createElement('option');
+            noneDelayOpt.value = '';
+            noneDelayOpt.textContent = 'Ninguno';
+            delaySelect.appendChild(noneDelayOpt);
+            (animationData.delays || []).forEach(d => {
+                const opt = document.createElement('option');
+                opt.value = d;
+                opt.textContent = `animate-delay-${d}`;
+                delaySelect.appendChild(opt);
+            });
+
+            // Llenar durations
+            const noneDurOpt = document.createElement('option');
+            noneDurOpt.value = '';
+            noneDurOpt.textContent = 'Por defecto';
+            durationSelect.appendChild(noneDurOpt);
+            (animationData.durations || []).forEach(d => {
+                const opt = document.createElement('option');
+                opt.value = d;
+                opt.textContent = `animate-duration-${d}`;
+                durationSelect.appendChild(opt);
+            });
+
+            // Llenar easings
+            const noneEaseOpt = document.createElement('option');
+            noneEaseOpt.value = '';
+            noneEaseOpt.textContent = 'Por defecto';
+            easeSelect.appendChild(noneEaseOpt);
+            (animationData.easings || []).forEach(e => {
+                const opt = document.createElement('option');
+                opt.value = e;
+                opt.textContent = `animate-ease-${e}`;
+                easeSelect.appendChild(opt);
+            });
+
+            // Valores por defecto interesantes
+            baseSelect.value = 'bounce-fade-in';
+            delaySelect.value = '300';
+            durationSelect.value = '1000';
+            easeSelect.value = 'spring';
+
+            // Event listeners
+            [baseSelect, delaySelect, durationSelect, easeSelect].forEach(sel => {
+                sel.addEventListener('change', updateCombinator);
+            });
+
+            document.getElementById('combo-play').addEventListener('click', playCombinator);
+            document.getElementById('combo-copy').addEventListener('click', copyCombinator);
+
+            updateCombinator();
+        }
+
+        function updateCombinator() {
+            const base = document.getElementById('combo-base').value;
+            const delay = document.getElementById('combo-delay').value;
+            const duration = document.getElementById('combo-duration').value;
+            const ease = document.getElementById('combo-ease').value;
+
+            // Actualizar preview de clases
+            const classesDiv = document.getElementById('combo-classes');
+            let html = `<span class="cls-base">animate-${base}</span>`;
+            if (delay) html += ` <span class="cls-delay">animate-delay-${delay}</span>`;
+            if (duration) html += ` <span class="cls-duration">animate-duration-${duration}</span>`;
+            if (ease) html += ` <span class="cls-ease">animate-ease-${ease}</span>`;
+            classesDiv.innerHTML = html;
+
+            // Aplicar clases al box
+            const box = document.getElementById('combo-box');
+            box.className = 'combo-box';
+            box.classList.add(`animate-${base}`);
+            if (delay) box.classList.add(`animate-delay-${delay}`);
+            if (duration) box.classList.add(`animate-duration-${duration}`);
+            if (ease) box.classList.add(`animate-ease-${ease}`);
+        }
+
+        function playCombinator() {
+            const box = document.getElementById('combo-box');
+            const classes = Array.from(box.classList);
+            box.className = 'combo-box';
+            void box.offsetWidth;
+            classes.forEach(c => box.classList.add(c));
+        }
+
+        function copyCombinator() {
+            const base = document.getElementById('combo-base').value;
+            const delay = document.getElementById('combo-delay').value;
+            const duration = document.getElementById('combo-duration').value;
+            const ease = document.getElementById('combo-ease').value;
+
+            let classes = `animate-${base}`;
+            if (delay) classes += ` animate-delay-${delay}`;
+            if (duration) classes += ` animate-duration-${duration}`;
+            if (ease) classes += ` animate-ease-${ease}`;
+
+            const html = `<div class="${classes}">Elemento</div>`;
+            navigator.clipboard.writeText(html).then(() => showToast('✅ HTML copiado al portapapeles'));
+        }
+
+        // ===== TARJETAS =====
+        function renderCards() {
+            const grid = document.getElementById('animation-grid');
+            grid.innerHTML = '';
+
+            const categories = buildCategories();
+            let totalCards = 0;
+
+            const order = ['base', 'loading', 'text', 'hover', 'notifications', 'delays', 'durations', 'easings'];
+
+            order.forEach(catKey => {
+                if (!categories[catKey] || categories[catKey].items.length === 0) return;
+                categories[catKey].items.forEach(item => {
+                    const card = createCard(item, categories[catKey]);
+                    grid.appendChild(card);
+                    totalCards++;
+                });
+            });
+
+            renderFilters(categories);
+            updateCategoryCounts(categories);
+            updateStats(totalCards, totalCards);
+        }
+
+        function buildCategories() {
+            return {
+                'base': { label: 'Base', class: 'base', items: (animationData.base || []).map(n => ({ name: n, type: 'animation' })) },
+                'loading': { label: 'Loading', class: 'loading', items: (animationData.loading || []).map(n => ({ name: n, type: 'animation' })) },
+                'text': { label: 'Text', class: 'text', items: (animationData.text || []).map(n => ({ name: n, type: 'animation' })) },
+                'hover': { label: 'Hover', class: 'hover', items: (animationData.hover || []).map(n => ({ name: n, type: 'animation' })) },
+                'notifications': { label: 'Notifications', class: 'notifications', items: (animationData.notifications || []).map(n => ({ name: n, type: 'animation' })) },
+                'delays': { label: 'Delays', class: 'delays', items: (animationData.delays || []).map(n => ({ name: n, type: 'delay' })) },
+                'durations': { label: 'Durations', class: 'durations', items: (animationData.durations || []).map(n => ({ name: n, type: 'duration' })) },
+                'easings': { label: 'Easings', class: 'easings', items: (animationData.easings || []).map(n => ({ name: n, type: 'ease' })) }
+            };
+        }
+
+        function createCard(item, category) {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.dataset.category = category.class;
+            card.dataset.name = item.name;
+            card.dataset.type = item.type;
+
+            // Badge
+            const badge = document.createElement('span');
+            badge.className = `category-badge ${category.class}`;
+            badge.textContent = category.label;
+            card.appendChild(badge);
+
+            // Contenedor del box
+            const boxContainer = document.createElement('div');
+            boxContainer.className = 'box-container';
+            const box = document.createElement('div');
+            box.className = 'box';
+            boxContainer.appendChild(box);
+            card.appendChild(boxContainer);
+
+            // Label y lógica según el tipo
+            const label = document.createElement('div');
+            label.className = 'label';
+
+            let baseAnim = 'fade-in'; // animación base por defecto para utilidades
+            let mainClass = '';
+
+            if (item.type === 'animation') {
+                mainClass = `animate-${item.name}`;
+                box.classList.add(mainClass);
+                label.innerHTML = `<span class="main-cls">${mainClass}</span>`;
+            }
+            else if (item.type === 'delay') {
+                mainClass = `animate-delay-${item.name}`;
+                applyUtilityClasses(box, 'fade-in', mainClass, null, null);
+
+                // Selector de animación base
+                const selector = createBaseSelector('fade-in', (newBase) => {
+                    baseAnim = newBase;
+                    applyUtilityClasses(box, baseAnim, mainClass, null, null);
+                    updateUtilityLabel(label, baseAnim, mainClass, null, null);
+                });
+                card.insertBefore(selector, boxContainer.nextSibling);
+
+                updateUtilityLabel(label, baseAnim, mainClass, null, null);
+            }
+            else if (item.type === 'duration') {
+                mainClass = `animate-duration-${item.name}`;
+                applyUtilityClasses(box, 'bouncing', null, mainClass, null);
+
+                const selector = createBaseSelector('bouncing', (newBase) => {
+                    baseAnim = newBase;
+                    applyUtilityClasses(box, baseAnim, null, mainClass, null);
+                    updateUtilityLabel(label, baseAnim, null, mainClass, null);
+                });
+                card.insertBefore(selector, boxContainer.nextSibling);
+
+                updateUtilityLabel(label, baseAnim, null, mainClass, null);
+            }
+            else if (item.type === 'ease') {
+                mainClass = `animate-ease-${item.name}`;
+                applyUtilityClasses(box, 'bouncing', null, null, mainClass);
+
+                const selector = createBaseSelector('bouncing', (newBase) => {
+                    baseAnim = newBase;
+                    applyUtilityClasses(box, baseAnim, null, null, mainClass);
+                    updateUtilityLabel(label, baseAnim, null, null, mainClass);
+                });
+                card.insertBefore(selector, boxContainer.nextSibling);
+
+                updateUtilityLabel(label, baseAnim, null, null, mainClass);
+            }
+
+            card.appendChild(label);
+
+            // Botón replay
+            const btn = document.createElement('button');
+            btn.className = 'replay-btn';
+            btn.textContent = '▶ Repetir';
+            btn.addEventListener('click', () => {
+                replayCard(card, box);
+            });
+            card.appendChild(btn);
+
+            return card;
+        }
+
+        function createBaseSelector(defaultValue, onChange) {
+            const selector = document.createElement('select');
+            selector.className = 'base-selector';
+            selector.title = 'Cambiar animación base';
+
+            BASE_ANIMATIONS_FOR_COMBO.forEach(anim => {
+                const opt = document.createElement('option');
+                opt.value = anim;
+                opt.textContent = `base: ${anim}`;
+                if (anim === defaultValue) opt.selected = true;
+                selector.appendChild(opt);
+            });
+
+            selector.addEventListener('change', (e) => {
+                onChange(e.target.value);
+            });
+
+            return selector;
+        }
+
+        function applyUtilityClasses(box, base, delay, duration, ease) {
+            box.className = 'box';
+            box.classList.add(`animate-${base}`);
+            if (delay) box.classList.add(delay);
+            if (duration) box.classList.add(duration);
+            if (ease) box.classList.add(ease);
+        }
+
+        function updateUtilityLabel(label, base, delay, duration, ease) {
+            let html = `<span class="base-cls">animate-${base}</span>`;
+            if (delay) html += `<br><span class="main-cls">${delay}</span>`;
+            if (duration) html += `<br><span class="main-cls">${duration}</span>`;
+            if (ease) html += `<br><span class="main-cls">${ease}</span>`;
+            label.innerHTML = html;
+        }
+
+        function replayCard(card, box) {
+            const classes = Array.from(box.classList);
+            box.className = 'box';
+            card.classList.add('animating');
+            void box.offsetWidth;
+            classes.forEach(c => box.classList.add(c));
+
+            // Quitar el highlight después de la animación
+            setTimeout(() => card.classList.remove('animating'), 2000);
+        }
+
+        function replayAll() {
+            document.querySelectorAll('.card:not(.hidden)').forEach(card => {
+                const box = card.querySelector('.box');
+                if (box) replayCard(card, box);
+            });
+        }
+
+        // ===== FILTROS =====
+        function renderFilters(categories) {
+            const container = document.getElementById('category-filters');
+            container.innerHTML = '';
+
+            const allBtn = document.createElement('button');
+            allBtn.className = 'filter-btn active';
+            allBtn.dataset.category = 'all';
+            allBtn.innerHTML = `Todas <span class="count" id="count-all">0</span>`;
+            container.appendChild(allBtn);
+
+            const order = ['base', 'loading', 'text', 'hover', 'notifications', 'delays', 'durations', 'easings'];
+            order.forEach(catKey => {
+                if (!categories[catKey] || categories[catKey].items.length === 0) return;
+                const cat = categories[catKey];
+                const btn = document.createElement('button');
+                btn.className = 'filter-btn';
+                btn.dataset.category = catKey;
+                btn.innerHTML = `${cat.label} <span class="count" id="count-${catKey}">0</span>`;
+                container.appendChild(btn);
+            });
+
+            container.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    container.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    filterCards();
+                });
+            });
+        }
+
+        function filterCards() {
+            const activeCategory = document.querySelector('.filter-btn.active').dataset.category;
+            const searchTerm = document.getElementById('search').value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.card');
+
+            let visibleCount = 0;
+            cards.forEach(card => {
+                const matchesCategory = activeCategory === 'all' || card.dataset.category === activeCategory;
+                const matchesSearch = !searchTerm || card.dataset.name.toLowerCase().includes(searchTerm);
+
+                if (matchesCategory && matchesSearch) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            updateStats(visibleCount, cards.length);
+        }
+
+        function updateStats(visible, total) {
+            const stats = document.getElementById('stats');
+            if (visible === total) {
+                stats.innerHTML = `Mostrando <strong>${total}</strong> utilidades de animación`;
+            } else {
+                stats.innerHTML = `Mostrando <strong>${visible}</strong> de <strong>${total}</strong> utilidades`;
+            }
+        }
+
+        function updateCategoryCounts(categories) {
+            let allCount = 0;
+            Object.values(categories).forEach(cat => allCount += cat.items.length);
+            document.getElementById('count-all').textContent = allCount;
+
+            Object.entries(categories).forEach(([key, cat]) => {
+                const countEl = document.getElementById(`count-${key}`);
+                if (countEl) countEl.textContent = cat.items.length;
+            });
+        }
+
+        // ===== TOAST =====
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2000);
+        }
+
+        init();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+/* Durations */
+
+@theme inline {
+    --animation-duration-75: 75ms;
+    --animation-duration-100: 100ms;
+    --animation-duration-150: 150ms;
+    --animation-duration-200: 200ms;
+    --animation-duration-300: 300ms;
+    --animation-duration-500: 500ms;
+    --animation-duration-700: 700ms;
+    --animation-duration-1000: 1000ms;
+    --animation-duration-1500: 1500ms;
+    --animation-duration-2000: 2000ms;
+    --animation-duration-2500: 2500ms;
+    --animation-duration-3000: 3000ms;
+    --animation-duration-none: 0s;
+    --animation-duration-slower: 500ms;
+    --animation-duration-slow: 400ms;
+    --animation-duration-normal: 300ms;
+    --animation-duration-fast: 200ms;
+    --animation-duration-faster: 100ms;
+}
