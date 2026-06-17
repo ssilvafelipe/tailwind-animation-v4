@@ -209,10 +209,6 @@ overrides:
 importers:
 
   .:
-    dependencies:
-      '@fss/tailwind-animation-v4':
-        specifier: 'link:'
-        version: 'link:'
     devDependencies:
       '@tailwindcss/node':
         specifier: ^4.3.1
