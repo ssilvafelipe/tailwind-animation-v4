@@ -3,6 +3,10 @@
 
 A comprehensive animation plugin for **Tailwind CSS v4** with 135+ ready-to-use animations, utilities, and custom easings.
 
+## 🔗 Demo
+
+- [Animation Lab]( https://sparkly-toffee-deccbe.netlify.app/)
+
 
 ## ✨ Features
 
